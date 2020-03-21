@@ -1,11 +1,14 @@
-class PopupEditUserAvatar extends Popup {
-  constructor(popupElement, api, formValidatorEditAvatar, userInfo) {
+import { Popup } from './Popup';
+
+export class PopupEditUserInfo extends Popup {
+  constructor(popupElement, api, formValidatorEditProfile, userInfo) {
     super(popupElement, api);
     this.userInfo = userInfo;
     this.form = popupElement.querySelector('form');
-    this.avatar = this.form.elements.link;
+    this.userName = this.form.elements.username;
+    this.job = this.form.elements.job;
     this.button = this.form.querySelector('.popup__button_save');
-    this.formValidatorEditAvatar = formValidatorEditAvatar;
+    this.formValidatorEditProfile = formValidatorEditProfile;
 
     this.form.addEventListener('submit', (event) => {
       this.renderLoading(true);
@@ -15,9 +18,11 @@ class PopupEditUserAvatar extends Popup {
 
   submit(event) {
     event.preventDefault();
-    const link = this.form.elements.link.value;
-
-    this.api.changeAvatar(link)
+    const newUserInfo = {
+      userName: this.userName.value,
+      job: this.job.value,
+    }
+    this.api.changeUserInfo(newUserInfo)
       .then((newUserInfo) => {
         this.userInfo.setUserInfo(newUserInfo);
         this.userInfo.updateUserInfo();
@@ -30,10 +35,17 @@ class PopupEditUserAvatar extends Popup {
       .finally(() => this.renderLoading(false));
   }
 
+  open() {
+    super.open();
+    const userData = this.userInfo.getUserInfo();
+    this.userName.value = userData.userName;
+    this.job.value = userData.job;
+  }
+
   close() {
     super.close();
     this.form.reset();
-    this.formValidatorEditAvatar.resetErrors();
+    this.formValidatorEditProfile.resetErrors();
   }
 
   renderLoading(isLoading) {

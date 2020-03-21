@@ -1,10 +1,9 @@
-class Api {
+export class Api {
   constructor(options) {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
   }
-  //  Отлично!
-  // Повторяющийся код вынесен в отдельный статический метод
+
   static handleRes(res) {
     if (res.ok) {
       return res.json();
@@ -86,3 +85,4 @@ class Api {
       .then(Api.handleRes)
   }
 }
+
