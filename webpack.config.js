@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const isDev = process.env.NODE_ENV === 'development';
 const webpack = require('webpack');
 
@@ -15,35 +16,33 @@ module.exports = {
     filename: '[name].[chunkhash].js'
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
-      },
-      {
-        test: /\.(png|jpg|gif|ico|svg)$/,
-        use: [
-          'file-loader?name=./images/[name].[ext]',
-          {
-            loader: 'image-webpack-loader',
-            options: {}
-          },
-        ]
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        loader: 'file-loader?name=./vendor/[name].[ext]'
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
       }
-    ]
+    },
+    {
+      test: /\.css$/,
+      use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
+    },
+    {
+      test: /\.(png|jpg|gif|ico|svg)$/,
+      use: [
+        'file-loader?name=./images/[name].[ext]',
+        {
+          loader: 'image-webpack-loader',
+          options: {}
+        },
+      ]
+    },
+    {
+      test: /\.(eot|ttf|woff|woff2)$/,
+      loader: 'file-loader?name=./vendor/[name].[ext]'
+    }]
   },
-  plugins: [ 
+  plugins: [
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash].css'
     }),
@@ -51,7 +50,7 @@ module.exports = {
       assetNameRegExp: /\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
-              preset: ['default'],
+        preset: ['default'],
       },
       canPrint: true
     }),
