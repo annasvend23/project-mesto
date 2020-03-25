@@ -1,4 +1,6 @@
-class CardsList {
+import { Card } from './Card';
+
+export class CardsList {
   constructor(container, cardsList, createCard, addCardButton, api, userInfo) {
     this.container = container;
     this.cardsList = cardsList;

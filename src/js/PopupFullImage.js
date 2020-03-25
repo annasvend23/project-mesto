@@ -1,4 +1,6 @@
-class PopupFullImage extends Popup {
+import { Popup } from './Popup';
+
+export class PopupFullImage extends Popup {
   constructor(popupElement, api, fullImage) {
     super(popupElement, api);
     this.fullImage = fullImage;

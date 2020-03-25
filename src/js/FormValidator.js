@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
   constructor(form, ERROR_MESSAGES) {
     this.form = form;
     this.button = this.form.querySelector('.button');
