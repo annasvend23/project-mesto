@@ -1,6 +1,6 @@
 # [annasvend23.github.io/project-mesto](https://annasvend23.github.io/project-mesto/)
 
-## Version 0.0.2
+## Version 0.0.3
 
 ### Project Mesto
 
