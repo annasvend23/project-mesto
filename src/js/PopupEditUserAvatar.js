@@ -5,7 +5,7 @@ export class PopupEditUserAvatar extends Popup {
     super(popupElement, api);
     this.userInfo = userInfo;
     this.form = popupElement.querySelector('form');
-    this.avatar = this.form.elements.link;
+    this.avatar = this.form.elements.avatar;
     this.button = this.form.querySelector('.popup__button_save');
     this.formValidatorEditAvatar = formValidatorEditAvatar;
 
@@ -17,11 +17,11 @@ export class PopupEditUserAvatar extends Popup {
 
   submit(event) {
     event.preventDefault();
-    const link = this.form.elements.link.value;
+    const link = this.avatar.value;
 
     this.api.changeAvatar(link)
       .then((newUserInfo) => {
-        this.userInfo.setUserInfo(newUserInfo);
+        this.userInfo.setUserInfo(newUserInfo.data);
         this.userInfo.updateUserInfo();
         this.close();
         this.form.reset();

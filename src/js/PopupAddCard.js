@@ -24,7 +24,7 @@ export class PopupAddCard extends Popup {
     }
     this.api.addNewCard(cardItem)
       .then((cardData) => {
-        this.cardList.addCard(cardData);
+        this.cardList.addCard(cardData.data);
         this.close();
         this.form.reset();
       })

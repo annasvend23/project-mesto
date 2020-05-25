@@ -11,7 +11,7 @@
 @import url(./__button/popup__button_loading.css);
 @import url(./_is-opened/popup_is-opened.css);
 @import url(./__input-error/popup__input-error.css);
-
+@import url(./__form-error/popup__form-error.css);
 
 .popup {
   position: fixed;

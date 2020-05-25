@@ -24,7 +24,7 @@ export class PopupEditUserInfo extends Popup {
     }
     this.api.changeUserInfo(newUserInfo)
       .then((newUserInfo) => {
-        this.userInfo.setUserInfo(newUserInfo);
+        this.userInfo.setUserInfo(newUserInfo.data);
         this.userInfo.updateUserInfo();
         this.close();
         this.form.reset();

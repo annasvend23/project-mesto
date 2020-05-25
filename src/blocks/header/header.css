@@ -1,6 +1,9 @@
+@import url("./__user/header__user.css");
+
 .header {
   min-height: 132px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #A5A5A5;
 }

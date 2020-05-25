@@ -1,8 +1,6 @@
-# [annasvend23.github.io/project-mesto](https://annasvend23.github.io/project-mesto/)
+# Project mesto *https://project-mesto.host/*
 
-## Version 0.0.3
-
-### Project Mesto
+## Version 1.0.0
 
 This project was created to demonstrate my skills.
 
@@ -16,6 +14,6 @@ This project was created to demonstrate my skills.
 
 To build project locally in production mode `npm run build`.
 
-### Deploy
-
-To deploy to gh-pages `npm run deploy`.
+Production domain: *https://project-mesto.host/*;
+Production API: *https://api.project-mesto.host/*;
+Public IP: 84.201.171.217;

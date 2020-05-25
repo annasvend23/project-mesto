@@ -20,13 +20,13 @@ export class Card {
       api.removeLike(cardId)
         .then((res) => {
           event.target.classList.remove('place-card__like-icon_liked');
-          event.target.parentElement.querySelector('.place-card__like-counter').textContent = res.likes.length;
+          event.target.parentElement.querySelector('.place-card__like-counter').textContent = res.data.likes.length;
         })
     } else {
       api.setLike(cardId)
         .then((res) => {
           event.target.classList.add('place-card__like-icon_liked');
-          event.target.parentElement.querySelector('.place-card__like-counter').textContent = res.likes.length;
+          event.target.parentElement.querySelector('.place-card__like-counter').textContent = res.data.likes.length;
         });
     }
   }
@@ -63,12 +63,12 @@ export class Card {
     placeCardLikeCounter.classList.add('place-card__like-counter');
     placeCardLikeCounter.textContent = likes.length;
 
-    if (owner._id !== userId) {
+    if (owner !== userId) {
       placeCardDeleteIcon.classList.add('place-card__delete-icon_hidden');
     }
 
-    for (const element of likes) {
-      if (element._id === userId) {
+    for (const like of likes) {
+      if (like === userId) {
         placeCardLikeIcon.classList.add('place-card__like-icon_liked');
       }
     }
