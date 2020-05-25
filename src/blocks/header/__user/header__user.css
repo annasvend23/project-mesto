@@ -1,0 +1,5 @@
+.header__user {
+  display: flex;
+  width: 195px;
+  justify-content: flex-end;
+}

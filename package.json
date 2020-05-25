@@ -1,6 +1,6 @@
 {
   "name": "project-mesto",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "JS and Webpack skills demonstration",
   "main": "script.js",
   "scripts": {

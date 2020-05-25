@@ -11,8 +11,16 @@
   <div class='root'>
     <header class='header root__section'>
       <img src="<%=require('./images/logo.svg').default%>" alt='mesto logo' class='logo'>
+      <div class='header__user'>
+        <button class='button button__log-in button__user'>Log in</button>
+        <button class='button button__log-out button__user button_hidden'>Log out</button>
+        <button class='button button__sign-up button__user'>Sign up</button>
+      </div>
     </header>
-    <div class='profile root__section'>
+
+    <div class='stub root__section'>Войдите или зарегистрируйтесь</div>
+
+    <div class='profile root__section block_hidden'>
       <div class='user-info'>
         <div class='user-info__photo'></div>
         <div class='user-info__data'>
@@ -25,6 +33,56 @@
     </div>
 
     <div class='places-list root__section'>
+    </div>
+
+    <div class='popup popup__sign-up'>
+      <div class='popup__content'>
+        <img src="<%=require('./images/close.svg').default%>" alt='' class='popup__close'>
+        <h3 class='popup__title'>Зарегистрироваться</h3>
+        <form class='popup__form' name='signup' novalidate>
+          <div>
+            <input type='text' name='name' minlength='2' maxlength='30' class='popup__input popup__input_type_name' placeholder='Имя' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div>
+            <input type='text' name='about' minlength='2' maxlength='30' class='popup__input popup__input_type_job' placeholder='О себе' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div>
+            <input type='url' name='avatar' class='popup__input popup__input_type_link-url' placeholder='Ссылка на аватар' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div>
+            <input type='email' name='email' class='popup__input popup__input_type_email' placeholder='Ваш email адрес' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div>
+            <input type='password' name='password' minlength='8' class='popup__input popup__input_type_password' placeholder='Пароль' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div class='popup__form-error'></div>
+          <button type='submit' class='button popup__button popup__button_sign-up' disabled>Регистрация</button>
+        </form>
+      </div>
+    </div>
+
+    <div class='popup popup__log-in'>
+      <div class='popup__content'>
+        <img src="<%=require('./images/close.svg').default%>" alt='' class='popup__close'>
+        <h3 class='popup__title'>Вход</h3>
+        <form class='popup__form' name='login' novalidate>
+          <div>
+            <input type='email' name='email' class='popup__input popup__input_type_email' placeholder='Ваш email адрес' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div>
+            <input type='password' name='password' minlength='8' class='popup__input popup__input_type_password' placeholder='Пароль' required>
+            <div class='popup__input-error'></div>
+          </div>
+          <div class='popup__form-error'></div>
+          <button type='submit' class='button popup__button popup__button_log-in' disabled>Войти</button>
+        </form>
+      </div>
     </div>
 
     <div class='popup popup__custom-card'>
@@ -40,6 +98,7 @@
             <input type='url' name='link' class='popup__input popup__input_type_link-url' placeholder='Ссылка на картинку' required>
             <div class='popup__input-error'></div>
           </div>
+          <div class='popup__form-error'></div>
           <button type='submit' class='button popup__button popup__button_add' disabled>+</button>
         </form>
       </div>
@@ -58,6 +117,7 @@
             <input type='text' name='job' minlength='2' maxlength='30' class='popup__input popup__input_type_job' placeholder='О себе' required>
             <div class='popup__input-error'></div>
           </div>
+          <div class='popup__form-error'></div>
           <button type='submit' class='button popup__button popup__button_save'>Сохранить</button>
         </form>
       </div>
@@ -67,11 +127,12 @@
       <div class='popup__content'>
         <img src="<%=require('./images/close.svg').default%>" alt='' class='popup__close'>
         <h3 class='popup__title'>Обновить аватар</h3>
-        <form class='popup__form' name='avatar' novalidate>
+        <form class='popup__form' name='editavatar' novalidate>
           <div>
-            <input type='url' name='link' class='popup__input popup__input_type_link-url' placeholder='Ссылка на аватар' required>
+            <input type='url' name='avatar' class='popup__input popup__input_type_link-url' placeholder='Ссылка на аватар' required>
             <div class='popup__input-error'></div>
           </div>
+          <div class='popup__form-error'></div>
           <button type='submit' class='button popup__button popup__button_save' disabled>Сохранить</button>
         </form>
       </div>
@@ -79,6 +140,7 @@
 
     <div class='popup popup__open-image'>
       <div class='popup__image-wrapper'>
+        <div class='popup__form-error'></div>
         <img src="<%=require('./images/close.svg').default%>" alt='' class='popup__close'>
         <img src='#' alt='' class='popup__full-image'>
       </div>

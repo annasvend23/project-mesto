@@ -2,15 +2,19 @@ export class FormValidator {
   constructor(form, ERROR_MESSAGES) {
     this.form = form;
     this.button = this.form.querySelector('.button');
-    this.ERROR_MESSAGES = ERROR_MESSAGES
+    this.ERROR_MESSAGES = ERROR_MESSAGES;
 
     this.form.addEventListener('input', this.validate.bind(this));
   }
 
   checkInputValidity(input, error) {
-    for (let key in this.ERROR_MESSAGES) {
+    const errorMessages = this.ERROR_MESSAGES[input.name]
+      ? this.ERROR_MESSAGES[input.name]
+      : this.ERROR_MESSAGES;
+
+    for (let key in errorMessages) {
       if (input.validity[key]) {
-        return error.textContent = this.ERROR_MESSAGES[key];
+        return error.textContent = errorMessages[key];
       }
     }
     return error.textContent = '';
